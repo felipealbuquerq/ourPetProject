@@ -90,17 +90,35 @@ $(document).ready(function(){
         $("#breedResult").prepend(yourPet);
         $("#breedResult").append(yourPetContact);
 
-        for(i=0; i<petPhoto.length; i++){
-          
+        for(i=0; i<petPhoto.length; i++){          
           if(petPhoto[i]["@size"] === "pn"){            
             var newPetPic = $("<img>").attr("src", petPhoto[i]["$t"])
               .addClass("img-responsive");
-            var newPetPicDiv = $("<div>").addClass("col-xs-6 col-md-4");
+
+            // if($(".img-responsive").length() === 3){
+               var newPetPicDiv = $("<div>").addClass("col-xs-6 col-md-4");
+            // } else if ($(".img-responsive").length() === 2){
+            //   var newPetPicDiv = $("<div>").addClass("col-xs-12 col-md-6");
+            // }
 
             newPetPicDiv.append(newPetPic);
-            $(".photoRow").append(newPetPicDiv);
+            $(".photoRow").append(newPetPicDiv);            
           }
         }
+
+        if($(".img-responsive").length === 1){
+          var newPetPicDiv = $("<div>")
+            .addClass("col-xs-12 col-md-4 col-md-offset-4");
+
+            newPetPicDiv.append(newPetPic);
+            $(".photoRow").empty().append(newPetPicDiv);
+        } else if($(".img-responsive").length === 2){debugger;           
+            var newPetPicDiv = $("<div>").addClass("col-xs-12 col-md-6");
+            
+            $(".photoRow").empty()
+            newPetPicDiv.append(newPetPic);
+            $(".photoRow").append(newPetPicDiv);
+        };
 
         for(i=0; i<petOptions.length; i++){
           var newPDiv = $("<div>").addClass("col-xs-6 col-md-3 well well-sm");
