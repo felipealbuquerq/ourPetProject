@@ -1,0 +1,46 @@
+body {
+ position: relative;
+ padding-top: 70px;
+ border: 15px solid #2C3E50;
+}
+.navbar-right{
+  margin-right: 0;
+}
+.navbar>.container-fluid .navbar-brand{
+  margin-left: 0;
+}
+.headline, #breedResult>h3, #breedResult>h2{
+  text-align: center;
+}
+#breedResult>h2{
+  font-size: 30px;
+}
+section {
+  padding-top: 50px;
+  overflow: hidden;
+}
+.container-fluid {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+section>h2, .headerInfo {
+  text-align: center;
+}
+#carousel-flickr{
+  padding: 0;
+}
+.carousel-inner>.item>img{
+  width: 550px;
+  height:425px;
+}
+.well>.col-sm-6{
+  padding-left: 0;
+}
+.well-sm{
+  text-align: center;
+  margin: 1px;
+}
+#whyAdopt>.well{
+  margin: 5px;
+  padding: 10px;
+}

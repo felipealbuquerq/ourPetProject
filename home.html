@@ -1,104 +1,275 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Our Pet Project</title>
   <!-- Compiled and minified CSS -->
- 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/flatly/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" >
+  <link rel="stylesheet" type="text/css" href="css/color.css">
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" id="home">
+  <nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Show Us a Pet <i class="fa fa-paw fa-1x"></i><i class="fa fa-paw fa-2x"></i><i class="fa fa-paw fa-1x"></i></a>
+      </div>
 
-	<ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">Adoption Process</a></li>
-    <li><a href="#!">Adoption Centers</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">Adoption Information</a></li>
-</ul>
-<ul id="dropdown2" class="dropdown-content">
-  <li><a href="#">Dog Breeding</a></li>
-  <li><a href="#">Gromming</a></li>
-  <li><a href="#">Dog Breeding</a></li>
-  <li><a href="#">Training</a></li>
-</ul>
-<ul id="dropdown3" class="dropdown-content">
-  <li> <a href="#">Start a Rescue Center</a></li>
-  <li> <a href="#">Volunteers</a></li>
-  <li><a href="#">FosterCare</a></li>
-  <li><a href="#"> Find Vertinary Doctors</a></li>
-  <li> <a href="#"> Prevention of Cruelty</a></li>
-</ul>
-<nav>
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="#">PetScearch</a></li>
-      
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Adoption<i class="material-icons right">  </i></a></li>
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Petcare<i class="material-icons right">   </i></a></li>
-      <!-- Dropdown Trigger -->
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown3">PetShelters<i class="material-icons right"></i></a></li>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#home">Pet Search</a></li>
+          <li><a href="#whyAdopt">Adoption</a></li>
+          <li><a href="#care">Care</a></li> 
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
-    </ul>
-</div>
-</nav>
-
- 
-<div id="map">
-  <input id="pac-input" class="controls" type="text" placeholder="SearchLocation">
-  <button class="btn waves-effect waves-light">Search</button>
-</div>
-
-<div class="container">
+  <div class="container">
   <!-- Page Content goes here -->
-  <div class="row">
-    <div class="input-field col s4">
-      <input id="breedCheck" type="text" class="validate">
-      <label for="breedCheck">Breed Name</label>
-      <button class="btn breed col s6 waves-effect waves-light" type="submit" name="action">check breed<i class="material-icons right"></i></button>
+    <div class="row headline">
+      <h1>Welcome to Show Us a Pet <i class="fa fa-paw fa-1x"></i><i class="fa fa-paw fa-2x"></i><i class="fa fa-paw fa-1x"></i></h1>
+      <h4>Your guide to finding the perfect shelter pet for your home</h4>
+      <br />
     </div>
-    <div id="wikiInfo">&nbsp;</div>
-      <div class="infoBox"></div>
-    </div>     
+    <div class="row">       
+      <form id="searchBoxes">
+        <div class="col-xs-12 col-sm-6 col-md-5 col-md-offset-1">
+          <div class="well well-lg">              
+            <h1>Search By Location</h1>
+            <p>Enter your Zip Code and choose an animal</p>
+            <div id="map">
+              <input id="enterZip" class="controls" type="text" placeholder="Enter 5 digit Zip">
+            </div>
+
+            <div>
+              <select class="newSelect" id="animal">
+                <option value="" disabled="disabled" selected="selected">Choose an Animal (Optional)</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="rabbit">Rabbit</option>
+                <option value="bird">Bird</option>
+                <option value="horse">Horse</option>
+              </select>
+              <button class="btn btn-primary zip">Search</button>
+            </div>
+            <div class="alert alert-danger" id="noZip" role="alert">
+              <a href="#" class="alert-link">Please Enter a Valid 5 Digit Zip Code</a>
+            </div>             
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-5">
+          <div class="well well-lg">              
+            <h1>Search By Breed</h1>
+            <p>Choose an animal type, then choose a breed</p>
+            
+            <div>
+              <select class="newSelect" id="animal2">
+                <option value="" disabled="disabled" selected="selected">Choose an Animal</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="rabbit">Rabbit</option>
+                <option value="bird">Bird</option>
+                <option value="horse">Horse</option>
+              </select>
+            </div>
+            
+            <select class="menu col-sm-6 newSelect" id="selectBreed">
+              <option value="" disabled="disabled" selected="selected">Choose a Breed</option>
+              <!--breed list populates here -->
+            </select>
+                      
+            <button class="btn btn-primary breedSearch">Search</button>
+            <div class="alert alert-danger" id="noAnimal" role="alert">
+              <a href="#" class="alert-link">Please Choose an Animal First</a>
+            </div>
+            <div class="alert alert-danger" id="breedSearchError" role="alert">
+              <a href="#" class="alert-link">Please Choose an Animal and a Breed</a>
+            </div>
+          </div>
+        </div>               
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+        <button class="btn btn-info" id="dscrptnBtn"type="button" data-toggle="collapse" data-target="#descriptions" aria-expanded="false" aria-controls="#descriptions">
+          Pet Value Keys
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="collapse" id="descriptions">
+        <div class="col-xs-6 col-sm-2 col-sm-offset-1 col-md-3 col-md-offset-1">
+          <h3>Sizes</h3>
+          <table>
+            <tr><th>Size</th><th>Description</th></tr>
+            <tr><td>S</td><td>Small</td></tr>
+            <tr><td>M</td><td>Medium</td></tr>
+            <tr><td>L</td><td>Large</td></tr>
+            <tr><td>XL</td><td>Extra Large</td></tr>
+          </table>
+        </div>
+        <div class="col-xs-6 col-sm-2">
+          <h3>Ages</h3>
+          <table>
+            <tr><th>Age</th></tr>
+            <tr><td>Baby</td></tr>
+            <tr><td>Young</td></tr>
+            <tr><td>Adult</td></tr>
+            <tr><td>Senior</td></tr>
+          </table>
+        </div>
+        <div class="col-xs-6 col-sm-2">
+          <h3>Sex</h3>
+          <table>
+            <tr><th>Ages</th></tr>
+            <tr><td>M</td><td>Male</td></tr>
+            <tr><td>F</td><td>Female</td></tr>
+          </table>
+        </div>
+        <div class="col-xs-6 col-sm-4">
+          <h3>Options</h3>
+          <table>
+            <tr><th>Option</th><th>Description</th></tr>
+            <tr><td>altered</td><td>Spayed / Neutered</td></tr>
+            <tr><td>noClaws</td><td>No Claws</td></tr>
+            <tr><td>hasShots</td><td>Has Current Shots</td></tr>
+            <tr><td>housetrained</td><td>Housebroken</td></tr>
+            <tr><td>noCats</td><td>Not Good With Cats</td></tr>
+            <tr><td>noDogs</td><td>Not Good With Dogs</td></tr>
+            <tr><td>noKids</td><td>Not Good With Kids</td></tr>
+            <tr><td>specialNeeds</td><td>Has Special Needs</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <div class="col-xs-12" id="breedResult">
+          
+        </div>
+        <br />
+        <div class="row photoRow">
+          
+        </div>
+        <br />
+        <div id="wikiInfo">&nbsp;
+          <p></p>
+        </div> 
+      </div>   
+    </div>
+    <div class="row">
+      <section id="whyAdopt">
+        <h2><i class="fa fa-paw fa-1x"></i><i class="fa fa-paw fa-2x"></i> Adoption <i class="fa fa-paw fa-2x"></i><i class="fa fa-paw fa-1x"></i></h2>
+        <h4 class="headline col-xs-12 col-md-8 col-md-offset-2">So why adopt? Simply put, having a pet is awesome! But if that isn't enough to convince you to adopt one, here are some other wonderful reasons to get a pet from a shelter:</h4>
+        <div class="col-xs-12 col-md-4">
+          <div class="well well-lg">
+            <h3>You could literally be saving a life</h3>
+            <p>There are almost three million adoptable animals euthanized in the United States each year because there aren't enough people to adopt them all, and that number only includes dogs and cats. By adopting, you are giving a lost, abandoned, and helpless pet a second chance at a happy life.</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="well well-lg">
+            <h3>You'll save money</h3>
+            <p>Not only are shelter pets often spayed/neutered, but they're usually already  up to date on their vaccinations and shots as well.  Plus, these pets are often already housetrained and can even do a few tricks!</p>
+          </div> 
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="well well-lg">
+            <h3>Pets boost your overall well-being</h3>
+            <p>Pet owners have been linked by the CDC to decreased blood pressure, cholesterol and triglyceride levels, and overall lower stress levels. Pets also give their owner a sense of purpose and are great for combatting loneliness and depression with their unconditional love and companionship. </p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="well well-lg">
+            <h3>You're supporting an animal shelter instead of a mass breeding mill</h3>
+            <p>If you don't buy your pet directly from a reputable breeder, you may be purchasing from a mill.  Mills are mass breeding facilities where animals are kept in deplorable conditions and forced to reproduce until they are no longer able. When they stop producing, the animals are either killed or abandoned. <br />
+            <br />
+            In contrast, animal shelters provide a valuable community service. They are non-profit organizations that promote the welfare of all animals and are often staffed by volunteers. Shelters help control the pet population by spaying/neutering their animals as well as by taking the time to place animals in situations where they can be successful pets.  Any fees collected by a shelter goes towards the support of this mission.</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="well well-lg">
+            <h3>You'll help create more cage space for other needy animals</h3>
+            <p>Million of pets are homeless because of a situation that was out of their control (i.e. a new baby, move, divorce, or death) and not because of anything they did wrong. In some cases, their owners just weren't interested in training them. By adopting instead of buying your new pet, you will be allowing another homeless pet (especially those that are elderly or special needs) to be taken in off the streets by a shelter.</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="well well-lg">
+            <h3>You'll gain a faithful companion and best friend</h3>
+            <p>Pets are remarkably intelligent. Most shelter pets seem to remember what their lives were like before they were adopted and are endlessly grateful and loving to their new families for taking a chance on them. They tend to be endlessly affectionate and already possess socialization and cooperative skills since they have most likely already lived with a family.</p>
+          </div>
+        </div>
+      </section>
+      <section id="care">
+        <div class="headerInfo">
+          <h2><i class="fa fa-paw fa-1x"></i><i class="fa fa-paw fa-2x"></i> Pet Care <i class="fa fa-paw fa-2x"></i><i class="fa fa-paw fa-1x"></i></h2>
+          <h4>All animals are different, but here are some basic tips for owning any kind of pet:</h4>
+        </div>
+        <div class="careList">
+          <ol>
+            <li><h3>Get your pet spayed/neutered</h3>
+            <p>Most animal shelters will have already taken care of this, but make sure your animal will not add to the rampant pet overpopulation problem.</p></li>
+            <li><h3>Get your pet examined regularly</h3>
+            <p>Pets can get sick too.  Make sure to get your pet looked at annually by a vet to make sure that they are in good health.  Regular vet visits will also help to ensure that your pet is up to date with their vaccines.</p></li>
+            <li><h3>Keep your pet active</h3>
+            <p>In addition to checking their overall health, a vet can also tell you if your pet is maintaining a healthy weight.  Many pets are overfed, which can lead to diabetes, arthritis, and even cancer. Make sure your pet has plenty of opportunity to exercise, and double check that you are feeding it the right amount of food.</p></li>
+            <li><h3>Keep your pet mentally stimulated</h3>
+            <p>Pets need to exercise their minds as well as their bodies. Bored pets often become destructive pets. Make sure that doesn't happen by keeping your pet occupied with toys and play time with their humans.</p></li>
+            <li><h3>Microchip your pet</h3>
+            <p>Many pets end up in shelters simply because they got lost one day and couldn't find their way back home. Make sure this doesn't happen to yours by having it microchipped.</p></li>
+          </ol>
+        </div>
+      </section>
+      <section id="about">
+        <h2><i class="fa fa-paw fa-1x"></i><i class="fa fa-paw fa-2x"></i> About Us <i class="fa fa-paw fa-2x"></i><i class="fa fa-paw fa-1x"></i></h2>
+        <h4 class="col-xs-12 col-md-8 col-md-offset-2">This website was created by a few students from the Rutgers Coding Bootcamp in New Brunswick, NJ.  Initially we just wanted to show off our new skills using API's (Application Program Interfaces), but we hope that we've created a useful service for people to find their next family member!
+        <br />
+        If you still need some encouragement to go get a furry friend, just look at all of these pet images that are currently on Flickr!</h4>
+      </section>
+
+      <div id="carousel-flickr" class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-5 col-md-offset-3 carousel slide" data-ride="carousel">
+        <!-- Removed the Indicators -->
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner flickrItem" role="listbox">
+          
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-flickr" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-flickr" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>   
+    </div>  
   </div> 
   
-  <div class="slider">
-    <ul class="slides">
-      <li>
-        <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
-        <div class="caption left-align">
-          <h3>Left Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
-        <div class="caption right-align">
-          <h3>Right Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-    </ul>
-  </div>
-      
-
-
  	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script> 
   <script type="text/javascript" src="scripts/wikiCall.js"></script>
-  <script type="text/javascript" src="js/Apis.js"></script>
-  <script type="text/javascript" src="js/Slider.js"></script>
+  <script type="text/javascript" src="scripts/flickrPics.js"></script>
+  <script type="text/javascript" src="scripts/petBreed.js"></script>
+  <script type="text/javascript" src="scripts/petZip.js"></script>
 </body>
 </html>
